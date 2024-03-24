@@ -1,0 +1,29 @@
+# 二进制文件
+bin/
+bin-int/
+obj/
+
+# 第三方库
+vendor/
+
+# 资源文件
+asset/
+
+# 日志文件
+*.log
+*.json
+
+# VS相关文件
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
+
+# Git相关文件
+.git
+
+# 其他
+*.ini
+*.bat
