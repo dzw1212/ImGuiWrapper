@@ -4,6 +4,7 @@
 
 void Text::Draw()
 {
+
 	switch (m_Flags)
 	{
 	case eTextFlags_None:

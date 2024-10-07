@@ -22,12 +22,14 @@ std::shared_ptr<Window> g_testWindow;
 
 static void Prepare()
 {
-    //g_testWindow = std::dynamic_pointer_cast<Window>(WidgetFactory::CreateWidget<Window>("Test Window"));
-    //auto text = std::dynamic_pointer_cast<Text>(WidgetFactory::CreateWidget<Text>("Hello World", eTextFlags_Color));
-    //text->SetColor(Color(255, 0, 0));
-    //g_testWindow->AddChild(text);
-    //auto button = std::dynamic_pointer_cast<Button>(WidgetFactory::CreateWidget<Button>("Click Me"));
-    //g_testWindow->AddChild(button);
+    g_testWindow = std::dynamic_pointer_cast<Window>(WidgetFactory::CreateWidget<Window>("Test Window"));
+    auto text = std::dynamic_pointer_cast<Text>(WidgetFactory::CreateWidget<Text>("Hello World", eTextFlags_Color));
+    text->SetColor(Color(255, 0, 0));
+    g_testWindow->AddChild(text);
+    auto button = std::dynamic_pointer_cast<Button>(WidgetFactory::CreateWidget<Button>("Click Me"));
+    button->SetPivot(0.5, 0.5);
+    button->SetAnchor(0.5, 0.5);
+    g_testWindow->AddChild(button);
 
     //Json data;
     //g_testWindow->Serialize(data);
@@ -35,11 +37,11 @@ static void Prepare()
     //std::ofstream uiFile("ui.json");
     //uiFile << data.dump(4);
 
-    std::ifstream uiFile("ui.json");
-    Json data;
-    uiFile >> data;
-    g_testWindow = std::dynamic_pointer_cast<Window>(WidgetFactory::CreateWidget<Window>());
-    g_testWindow->Deserialize(data);
+    //std::ifstream uiFile("ui.json");
+    //Json data;
+    //uiFile >> data;
+    //g_testWindow = std::dynamic_pointer_cast<Window>(WidgetFactory::CreateWidget<Window>());
+    //g_testWindow->Deserialize(data);
 }
 
 static void Draw()

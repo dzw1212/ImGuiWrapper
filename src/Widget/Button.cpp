@@ -6,6 +6,23 @@
 
 void Button::Draw()
 {
+	if (m_Layout.bValid)
+	{
+		ImVec2 windowSize = ImGui::GetWindowSize();
+		ImVec2 windowPos = ImGui::GetWindowPos();
+		ImVec2 anchorPos = ImVec2(windowSize.x * m_Layout.Pivot.x, windowSize.y * m_Layout.Pivot.y);
+
+		ImVec2 textSize = ImGui::CalcTextSize(m_strContent.c_str());
+		const auto& style = ImGui::GetStyle();
+		float fWidth = textSize.x + style.FramePadding.x * 2.0f;
+		float fHeight = textSize.y + style.FramePadding.y * 2.0f;
+		ImVec2 pivotPos = ImVec2(fWidth * m_Layout.Pivot.x, fWidth * m_Layout.Pivot.y);
+
+		ImVec2 calcPos = ImVec2(anchorPos.x - pivotPos.x + m_Layout.Pos.x, anchorPos.y - pivotPos.y + m_Layout.Pos.y);
+
+		ImGui::SetCursorPos(calcPos);
+	}
+
 	ImGui::Button(m_strContent.c_str());
 	if (ImGui::IsItemClicked(ImGuiMouseButton_Left))
 	{

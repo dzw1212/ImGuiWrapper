@@ -19,7 +19,7 @@ void Window::Draw()
 {
 	ImGui::Begin(m_strName.c_str());
 
-	for (auto widget : m_vecWidgets)
+	for (auto& widget : m_vecWidgets)
 	{
 		widget->Draw();
 	}
@@ -30,7 +30,7 @@ void Window::Draw()
 void Window::Serialize(Json& data)
 {
 	Json children;
-	for (auto widget : m_vecWidgets)
+	for (auto& widget : m_vecWidgets)
 	{
 		Json child;
 		widget->Serialize(child);
@@ -50,9 +50,9 @@ void Window::Deserialize(const Json& data)
 	data.at("uuid").get_to(m_ID);
 	m_vecWidgets.clear();
 	m_mapWidgets.clear();
-	for (auto it : data.at("children"))
+	for (auto& it : data.at("children"))
 	{
-		auto strType = it.at("type");
+		auto& strType = it.at("type");
 		if (strType == "Text")
 		{
 			auto text = WidgetFactory::CreateWidget<Text>();

@@ -1,11 +1,22 @@
 #pragma once
 
+struct Vector2
+{
+	float x = 0.f;
+	float y = 0.f;
+};
+
 struct Vector3
 {
-	float x, y, z;
+	float x = 0.f;
+	float y = 0.f; 
+	float z = 0.f;
 };
 
 struct Vector4
 {
-	float x, y, z, w;
+	float x = 0.f;
+	float y = 0.f;
+	float z = 0.f; 
+	float w = 0.f;
 };
